@@ -14,12 +14,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bridgelabz.bookstore.dto.LoginDTO;
 import com.bridgelabz.bookstore.dto.ResponseDTO;
 import com.bridgelabz.bookstore.dto.UserRegistrationDTO;
 import com.bridgelabz.bookstore.model.UserRegistrationData;
+import com.bridgelabz.bookstore.service.IUserRegistration;
 import com.bridgelabz.bookstore.service.UserRegistrationService;
 
 @RestController
@@ -75,5 +77,12 @@ public class UserRegistrationController {
 		Boolean result = userservice.verifyUser(token);
 		return result;
 	}
-	
+
+	@PostMapping("/forgotpassword")
+	ResponseEntity<ResponseDTO> forgotpass(@RequestParam String emailId, @RequestParam String password) {
+		UserRegistrationData forgotPassword = userservice.forgotPassword(emailId, password);
+		ResponseDTO response = new ResponseDTO("Reset Password   :", forgotPassword);
+		return new ResponseEntity<>(response, HttpStatus.ACCEPTED);
+	}
+
 }

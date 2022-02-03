@@ -1,9 +1,12 @@
 package com.bridgelabz.bookstore.service;
 
 import java.util.List;
+
+import org.springframework.stereotype.Service;
+
 import com.bridgelabz.bookstore.dto.BookDetailsDTO;
 import com.bridgelabz.bookstore.model.BookDetails;
-
+@Service
 public interface IBookDetailsService {
 
 	List<BookDetails> showAllBooks(String token);

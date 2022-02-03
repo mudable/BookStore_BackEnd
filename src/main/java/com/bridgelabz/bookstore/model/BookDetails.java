@@ -18,7 +18,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "bookstorage")
 public class BookDetails  {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int bookId;
 
 	@Column(name = "bookName")

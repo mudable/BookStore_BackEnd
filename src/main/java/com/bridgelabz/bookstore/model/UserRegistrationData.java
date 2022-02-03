@@ -1,11 +1,8 @@
 package com.bridgelabz.bookstore.model;
 
 import java.time.LocalDate;
-import java.util.Date;
-
 import javax.persistence.*;
 import com.bridgelabz.bookstore.dto.UserRegistrationDTO;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,7 +16,7 @@ import lombok.ToString;
 @AllArgsConstructor
 public class UserRegistrationData {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int userId;
 
 	@Column(name = "firstName")

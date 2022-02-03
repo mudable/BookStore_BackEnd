@@ -24,4 +24,7 @@ public interface IUserRegistration {
 	public ResponseDTO loginValidation(LoginDTO logindto);
 
 	public Boolean verifyUser(String token);
+
+	UserRegistrationData forgotPassword(String emailId, String password);
+
 }

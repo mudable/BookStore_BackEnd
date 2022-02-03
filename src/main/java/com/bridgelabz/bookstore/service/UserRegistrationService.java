@@ -2,12 +2,10 @@ package com.bridgelabz.bookstore.service;
 
 import java.util.List;
 import java.util.Optional;
-
 import javax.validation.Valid;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.bridgelabz.bookstore.dto.LoginDTO;
 import com.bridgelabz.bookstore.dto.ResponseDTO;
 import com.bridgelabz.bookstore.dto.UserRegistrationDTO;
@@ -106,4 +104,14 @@ public class UserRegistrationService implements IUserRegistration {
 		}
 	}
 
-}
+	@Override
+	public UserRegistrationData forgotPassword(String emailId, String password) {
+		Optional<UserRegistrationData> isPresent = repository.findByEmailId(emailId);
+		if (isPresent.isPresent()) {
+			isPresent.get().setPassword(password);
+			return repository.save(isPresent.get());
+		} else {
+			throw new UserRegistrationException("Invalid Email") ;
+		}
+	}
+	}
